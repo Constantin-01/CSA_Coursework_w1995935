@@ -16,3 +16,19 @@ URL's as it can easily follow the hyperlinks provided.
 The benefit the client because the server is easier to use compared to having
 to rely on static documantaion meaning that it decreases  the time needed to find a 
 specific endpoint.
+
+Part 2.1
+When the server returns room ID's only, the size of the response is smaller possitively
+affecting the network as it uses less bandwith. The side affect is that the client has
+to do more processing as it must use either specific filters and aslo more HTTP requests 
+to retrieve a all information the room object contains.
+Returning a full room object requires more bandwith as it contains more data so in a 
+large server system where the room object contains heavy amount of data, the bandwith
+can get overloaded so it can negatively affect the network efficiency wehn there are loads
+of the entire data of the room objects. Whereas it positively affects the client side as it 
+has to do less processing, it has to send less HTTP requests to get a larger amount of 
+data.
+
+Part 2.2
+
+
