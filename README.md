@@ -98,5 +98,21 @@ automatically applies it to multiple requests, instead of manually duplicationg 
 Logger.info() statements inside every single resource method.
 
 
+API Design Overview:
+
+The API application that I have created contains 3 classes that represent the Rooms the sensors 
+and the sensor readings. Instances of those objects are saved in a mock database class in lists
+data structure. The resources of those classes contain functionallities as adding an instance to
+the server, deleting an instance using its id in the URI, retrievig the list of object instances
+stored in the system for all resources. The first thing incorporated in the system that the 
+client can request is by using the base endpoint which will retrieve some Business metadata
+and its resources with their specific hyper links. My application also allows searching for certain 
+specific instances by using Query Parameters filtering, for example retrieving a certain type of sensor
+object. 
+
+
+
+
+
 
 
