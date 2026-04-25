@@ -69,4 +69,34 @@ of them is changed, so it is easier to maintain the system. When it comes to the
 in part 4.1, the parent resource only routes to the specific sensorReadingResource instance which will after
 handle the actual operations, in conclusion allowing separation of concerns: decoupling.
 
+Part 5.2
+ Question: Why is HTTP 422 often considered more semantically accurate than a standard
+404 when the issue is a missing reference inside a valid JSON payload
+
+The 404 Not Found response is generally used for something in the server not existing.
+Whereas the HHTP 422 Unprocessable response is used for scenarios where the Json body
+request is valid but there is an inconsistency with a certain data within the Json 
+body. For example, referencing a roomId that does not exist. Therefore tieing back to
+the question, the HTTP 422 response is more semantically accurate because the Jason
+request is valid but it contains invalid data inside. 
+
+Part 5.4
+By exposing internal Java stack traces to external API consumers, specific information from
+the stack trace can give an attacker a great advantage because due to the stack tracke
+an attacker can duduce the internal structure of the server, see at what line the specific
+error occured giving the attcker more information of server vilnerabilities. Addiional
+infromation that can be found in the stack trace is package names, class names, variable 
+names which all reveal where specific potential weaknesses are found int the server sytem.
+Furthermore from the stack trace an attacker can deduce what the database structure is 
+like, exposing weeknesses on the database and also it can even provide the libraries 
+used which further expands on the leaked information of the server system.
+
+Part 5.5
+Using JAX-RS filters for cross cutting concers like logging is advantageous because 
+it is implementd within a singular class which centralises the logging logic and it 
+automatically applies it to multiple requests, instead of manually duplicationg the
+Logger.info() statements inside every single resource method.
+
+
+
 
