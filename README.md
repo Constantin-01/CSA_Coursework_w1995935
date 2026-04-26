@@ -111,6 +111,108 @@ specific instances by using Query Parameters filtering, for example retrieving a
 object. 
 
 
+Sample Curl Commands:
+
+Discovery:
+curl:  http://localhost:8080/CSA_Coursework_w1995935/api/v1
+
+response:
+
+{
+    "version": "v1",
+    "contact": "information@info.com",
+    "resources": {
+        "rooms": "/api/v1/rooms",
+        "sensors": "/api/v1/sensors",
+        "sensorReadings": "/api/v1/sensors/{sensorId}/sensorReadings"
+    }
+}
+
+Get all rooms:
+curl: http://localhost:8080/CSA_Coursework_w1995935/api/v1/rooms
+[
+    {
+        "id": "R-1",
+        "name": "Lecture Hall",
+        "capacity": 200,
+        "sensorIds": []
+    },
+    {
+        "id": "R-2",
+        "name": "Seminar Class",
+        "capacity": 30,
+        "sensorIds": []
+   }
+]
+
+Create a room:
+curl: http://localhost:8080/CSA_Coursework_w1995935/api/v1/rooms
+POST
+    {
+        "id": "R-8",
+        "name": "Lecture Hall 2",
+        "capacity": 200,
+        "sensorIds": []
+    }
+
+Get a specific room by id:
+curl: http://localhost:8080/CSA_Coursework_w1995935/api/v1/rooms/R-1
+{
+    "id": "R-1",
+    "name": "Lecture Hall",
+    "capacity": 200,
+    "sensorIds": []
+}
+
+Get all sensors:
+curl: http://localhost:8080/CSA_Coursework_w1995935/api/v1/sensors
+[
+    {
+        "id": "T-1",
+        "type": "Temperature",
+        "status": "Active",
+        "currentValue": 19.0,
+        "roomId": "R-1"
+    },
+    {
+        "id": "T-2",
+        "type": "CO2",
+        "status": "Active",
+        "currentValue": 17.5,
+        "roomId": "R-2"
+    }
+]
+
+Create a sensor:
+curl: http://localhost:8080/CSA_Coursework_w1995935/api/v1/sensors
+POST
+{
+    "id": "T-6",
+    "type": "Temperature",
+    "status": "Active",
+    "currentValue": 19.0,
+    "roomId": "R-2"
+}
+
+Add new sensor readings:
+curl:http://localhost:8080/CSA_Coursework_w1995935/api/v1/sensors/T-1/readings
+POST
+{
+  "timestamp": 174523794,
+  "value": 77.2
+}
+
+Get specific sensor by filtering:
+Curl:http://localhost:8080/CSA_Coursework_w1995935/api/v1/sensors?type=CO2
+[
+    {
+        "id": "T-2",
+        "type": "CO2",
+        "status": "Active",
+        "currentValue": 17.5,
+        "roomId": "R-2"
+    }
+]
 
 
 
