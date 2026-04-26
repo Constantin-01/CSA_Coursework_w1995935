@@ -214,6 +214,25 @@ Curl:http://localhost:8080/CSA_Coursework_w1995935/api/v1/sensors?type=CO2
     }
 ]
 
+Instructions on how to build the project and launch the server:
+
+1. Clone the GitHub repository.
+
+2. Open the project in Apache NetBeans from the downloaded folder.
+
+3. Make sure Apache Tomcat is added under:
+   Services - Servers - Apache Tomcat
+
+4. Once the project has been added to Apache
+   right click the project and select:
+   Clean and Build
+
+6. Right click the project again and select:
+   Run
+
+7. Once Tomcat starts, open Postman or a browser and test
+   using the curl commands provided above.
+
 
 
 
