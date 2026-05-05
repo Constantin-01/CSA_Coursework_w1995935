@@ -4,6 +4,7 @@ import com.backend.dao.*;
 import com.backend.model.Sensor;
 import com.backend.model.Room;
 import com.backend.model.SensorReading;
+import com.backend.exception.*;
 import java.util.ArrayList;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -49,7 +50,7 @@ public class SensorResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void addSensor(Sensor sensor) {
         if (sensorRoomDAO.getById(sensor.getRoomId()) == null) {
-            throw new WebApplicationException("The room ID you have provided does not exist!", 400);
+            throw new LinkedResourceNotFoundException("This sensor can't be added because the room ID provided does not exist");
         }
 
         sensorDAO.add(sensor);

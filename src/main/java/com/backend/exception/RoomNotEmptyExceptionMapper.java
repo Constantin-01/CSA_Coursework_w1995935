@@ -12,8 +12,9 @@ public class RoomNotEmptyExceptionMapper implements ExceptionMapper<RoomNotEmpty
 
     @Override
     public Response toResponse(RoomNotEmptyException exception) {
-        ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(), 404, "link/endpoint");
-        return Response.status(Status.NOT_FOUND)
+        ErrorMessage errorMessage = new ErrorMessage(exception.getMessage(), 409, "link/endpoint");
+        return Response.status(Status.CONFLICT)
+                .type("application/json")
                 .entity(errorMessage)
                 .build();
     }

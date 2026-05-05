@@ -1,6 +1,6 @@
 package com.backend.model;
 
-public class ErrorMessage {
+public class ErrorMessage{
     private String errorMessage;
     private int errorCode;
     private String documentation;
@@ -37,7 +37,5 @@ public class ErrorMessage {
     public void setDocumentation(String documentation) {
         this.documentation = documentation;
     }
-    
-    
     
 }

@@ -3,11 +3,11 @@ package com.backend.resource;
 import com.backend.dao.*;
 import com.backend.model.SensorReading;
 import com.backend.model.Sensor;
+import com.backend.exception.*;
 import java.util.ArrayList;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-
 
 public class SensorReadingResource {
 
@@ -43,26 +43,25 @@ public class SensorReadingResource {
 
         return filteredSensorReading;
     }
-    
-    
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public SensorReading addNewReading(SensorReading newReading){
+    public SensorReading addNewReading(SensorReading newReading) {
         newReading.setSensorId(sensorId);
 
+        Sensor sensor = sensorDAO.getById(sensorId);
+        if (sensor.getStatus().equals("MAINTENANCE")) {
+            throw new SensorUnavailableException("This sensor is currently in maintenance and can't accept new readings!");
+        }
+        
         SensorReading newAddedReading = sensorReadingDAO.add(newReading);
 
-        Sensor sensor = sensorDAO.getById(sensorId);
-            
         sensor.setCurrentValue(newReading.getValue());
-            
+
         sensorDAO.update(sensor);
-            
+
         return newAddedReading;
     }
-    
 
 }
-
-

@@ -15,8 +15,9 @@ public class MockDatabase {
     static{
         ROOM.add(new Room("R-1", "Lecture Hall", 200 ));
         ROOM.add(new Room("R-2", "Seminar Class", 30 ));
+        ROOM.add(new Room("R-3", "Exam Hall", 100));
         
-        SENSOR.add(new Sensor("T-1", "Temperature", "Active", 19, ROOM.get(0).getId()));
+        SENSOR.add(new Sensor("T-1", "Temperature", "MAINTENANCE", 19, ROOM.get(0).getId()));
         SENSOR.add(new Sensor("T-2", "CO2", "Active", 17.5, ROOM.get(1).getId()));
         
         SREADING.add(new SensorReading("SR-01", 174523794L, 2.2, "T-1" ));
